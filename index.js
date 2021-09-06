@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');               //设计命令行
 const download = require('download-git-repo');      //github仓库下载
 const handlebars = require('handlebars');           //修改字符
