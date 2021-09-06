@@ -58,9 +58,9 @@ program
             //第一个参数是github仓库地址，第二个参数是创建的项目目录名，第三个参数是clone
             download(downloadUrl, answers.projectName, { clone: true }, err => {
                 if (err) {
-                    console.log(logSymbols.error, chalk.red('项目下载失败 请重试 o(╥﹏╥)o'));
+                    console.log(logSymbols.error, chalk.red('\n项目下载失败 请重试 o(╥﹏╥)o'));
                     console.log(err);
-                    return;
+                    spinner.fail("下载失败!")
                 } else {
                     //根据命令行答询结果修改package.json文件
                     let packageContent = JSON.parse(fs.readFileSync(`${resolve('./')}/${answers.projectName}/package.json`));
@@ -125,6 +125,7 @@ program
                 let pluginTemplate = handlebars.compile(templateContent)(answers);
                 fs.writeFileSync(`./plugins/${answers.pluginName}.js`, pluginTemplate);
             }
+            console.log(logSymbols.success, chalk.green('插件创建成功！'));
         })
     })
 
