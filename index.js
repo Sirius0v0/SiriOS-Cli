@@ -72,9 +72,9 @@ program
 
                     console.log(logSymbols.success, chalk.green('项目初始化成功，开始下载依赖...'));
 
-                    // install({ cwd: `${resolve('./')}/${answers.projectName}` }).then(data => {
-                    //     console.log(logSymbols.success, chalk.green('项目依赖下载成功！'));
-                    // });
+                    install({ cwd: `${resolve('./')}/${answers.projectName}` }).then(data => {
+                        console.log(logSymbols.success, chalk.green('项目依赖下载成功！'));
+                    });
 
                 }
             })
