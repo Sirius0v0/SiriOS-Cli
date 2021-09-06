@@ -1,0 +1,60 @@
+"use strict"
+const { getPermission } = require("../lib/permission");
+
+/* ==== 切记 ==== */
+/*
+
+修改以下用【】框选的内容并添加到 {Project}/config/permission.json 中的 "example" 字段下
+tip: "isadmin"字段为功能权限，全部成员可用填["member", "admin", "owner"]
+                            仅管理员可用填["admin", "owner"]
+
+"_{{funcName}}": {
+    "activation": true,
+    "help": {
+        "desc": "【对于该功能的简要描述（15字内最佳）】",
+        "cmd": "【触发该功能的命令】"
+    },
+    "isadmin": [
+        "member",
+        "admin",
+        "owner"
+    ]
+}
+
+*/
+
+async function {{funcName}}(data, args = null) {
+    if (!await getPermission(data, "{{funcName}}")) return;
+    /* Do what you want */
+
+    /** 消息类data包含内容参考
+     * {self_id: botqq,
+     * time: 10位时间戳,
+     * post_type: 'message',
+     * message_type: 'group',
+     * sub_type: 'normal',
+     * message_id: 'I6uL3SpB1RMADEcRW9A3WWE2FNQB',
+     * group_id: 群qq,
+     * group_name: '西工大的摸鱼MINECRAFT',
+     * user_id: 发送者qq,
+     * anonymous: null,
+     * message: [ { type: 'text', data: [Object] } ],
+     * raw_message: '让村民当我的工具人',
+     * atme: false,
+     * font: '宋体',
+     * sender: {
+     *      user_id: 发送者qq,
+     *      nickname: 'Sirius0v0',  // qq名称
+     *      card: '群小天狼星Sirius0v0',     // 群内昵称
+     *      sex: 'male',
+     *      age: 21,
+     *      area: '西安',
+     *      level: 1,
+     *      role: 'admin',
+     *      title: ''
+     * },
+     * reply: [Function (anonymous)]    // 回复该事件方法
+     * }
+     */
+}
+exports.{{funcName}} = {{funcName}};

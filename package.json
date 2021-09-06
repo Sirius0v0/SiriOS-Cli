@@ -1,0 +1,36 @@
+{
+  "name": "sirios-cli",
+  "version": "1.0.0",
+  "description": "SiriOS管理部署工具",
+  "main": "index.js",
+  "bin": {
+    "sirios": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "serve": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sirius0v0/SiriOS-Cli.git"
+  },
+  "author": "Sirius0v0",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Sirius0v0/SiriOS-Cli/issues"
+  },
+  "homepage": "https://github.com/Sirius0v0/SiriOS-Cli#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.1.0",
+    "cross-spawn": "^7.0.3",
+    "download-git-repo": "^3.0.2",
+    "log-symbols": "^3.0.0",
+    "handlebars": "^4.7.7",
+    "inquirer": "^8.1.2",
+    "ora": "^4.0.3",
+    "request": "^2.88.2"
+  }
+}

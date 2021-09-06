@@ -1,0 +1,36 @@
+"use strict"
+const { getPermission } = require("../lib/permission");
+
+/* ==== 切记 ==== */
+/*
+
+添加以下内容到 {Project}/config/permission.json 中的 "example" 字段下
+
+"_{{funcName}}": {
+    "activation": true,
+    "help": null
+}
+
+*/
+
+async function {{funcName}}(data) {
+    if (!await getPermission(data, "{{funcName}}")) return;
+    /* Do what you want */
+
+    /** 通知类data包含内容参考
+     * {
+     * self_id: botqq,
+     * time: 10位时间戳,
+     * post_type: 'notice',
+     * notice_type: 'group',
+     * sub_type: 'poke',    // 更多参考(https://github.com/takayama-lily/oicq/wiki/92.%E4%BA%8B%E4%BB%B6%E6%96%87%E6%A1%A3#Event-notice)
+     * group_id: bot所在群id,
+     * user_id: 事件主体qq,
+     * target_id: 事件主体qq,
+     * operator_id: 发起者qq,
+     * action: '戳了戳',
+     * suffix: '的怀里的猫猫然后被咬了'
+     * }
+     */
+}
+exports.{{funcName}} = {{funcName}};
