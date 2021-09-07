@@ -11,11 +11,13 @@ const fs = require('fs');
 const { resolve } = require("path");
 const path = require("path");
 const install = require("./utils/install");
+const run = require("./utils/run");
 
 console.log(chalk.green(`
                            SiriOS cli 命令
     ------------------------------------------------------------
        sirios init                              |  初始化项目 
+       sirios run                               |  运行
        sirios plugin new                        |  创建插件模板     
        sirios -h                                |  查看帮助      
        sirios -V                                |  查看版本号 
@@ -148,6 +150,20 @@ program
             }
             console.log(logSymbols.success, chalk.green('插件创建成功！'));
         })
+    })
+
+// sirios run
+program
+    .command('run')
+    .description('开始运行')
+    .action(() => {
+        try {
+            fs.readdirSync(`${resolve('./')}/plugins`);
+        } catch (error) {
+            console.log(logSymbols.error, chalk.red('请在项目根目录下运行'));
+            return;
+        }
+        run({ cwd: `${resolve('./')}` })
     })
 
 program.parse(process.argv);
