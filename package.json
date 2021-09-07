@@ -2,14 +2,14 @@
   "name": "sirios-cli",
   "version": "1.0.0",
   "description": "SiriOS管理部署工具",
-  "main": "index.js",
+  "main": "sirios.js",
   "bin": {
-    "sirios": "index.js"
+    "sirios": "sirios.js"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js",
-    "serve": "node index.js",
+    "start": "node sirios.js",
+    "dev": "node sirios.js",
+    "serve": "node sirios.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

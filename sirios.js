@@ -58,7 +58,7 @@ program
             //第一个参数是github仓库地址，第二个参数是创建的项目目录名，第三个参数是clone
             download(downloadUrl, answers.projectName, { clone: true }, err => {
                 if (err) {
-                    console.log(logSymbols.error, chalk.red('\n项目下载失败 请重试 o(╥﹏╥)o'));
+                    console.log(logSymbols.error, chalk.red('项目下载失败 请重试 o(╥﹏╥)o'));
                     console.log(err);
                     spinner.fail("下载失败!")
                 } else {
@@ -86,6 +86,15 @@ program
     .command('plugin new')
     .description('创建插件模板')
     .action(() => {
+        let fileName = [];
+        //获取插件列表
+        try {
+            fileName = fs.readdirSync(`${resolve('./')}/plugins`);
+        } catch (error) {
+            console.log(logSymbols.error, chalk.red('请在项目根目录下创建'));
+            return;
+        }
+
         //命令行答询
         inquirer.prompt([
             {
@@ -95,6 +104,18 @@ program
                 default: '',
                 validate(value) {
                     if ('' == value) return false;
+                    if (value[0] === '.') {
+                        console.log(logSymbols.error, chalk.red('非法的首字母'));
+                        return false;
+                    }
+                    for (let index = 0; index < fileName.length; index++) {
+                        let elem = fileName[index];
+                        if (elem.endsWith(".js")) fileName[index] = elem.substr(0, elem.length - 3)
+                    }
+                    if (fileName.indexOf(value) !== -1) {
+                        console.log(logSymbols.error, chalk.red('插件名已存在'));
+                        return false;
+                    }
                     return true;
                 }
             },
