@@ -19,7 +19,7 @@ SiriOS 致力于为群友提供一个娱乐的互动方案，让群友们友好�
 
 ## 安装
 ```bash
-$ npm i sirios-cli
+$ npm i sirios-cli -g
 ```
 
 ## 开始使用

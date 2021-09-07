@@ -24,6 +24,22 @@ console.log(chalk.green(`
     ------------------------------------------------------------
 `));
 
+// 下载源
+const source = {
+    'SiriusBot': {
+        url: 'https://github.com/Sirius0v0/SiriusBot',
+        downloadUrlMain: 'https://github.com:Sirius0v0/SiriusBot#main',
+        downloadUrlDev: 'https://github.com:Sirius0v0/SiriusBot#dev',
+        description: 'SiriOS原型--SiriusBot'
+    },
+    'LingCat-bot': {
+        url: 'https://github.com/NPUcraft/LingCat-bot',
+        downloadUrlMain: 'https://github.com:NPUcraft/LingCat-bot#main',
+        downloadUrlDev: 'https://github.com:NPUcraft/LingCat-bot#dev',
+        description: 'NPUcraft正版灵喵'
+    }
+}
+
 // sirios -V|--version
 program.version('1.0.0');  // -v|--version时输出版本号0.1.0
 
@@ -34,6 +50,16 @@ program
     .action(() => {
         //命令行答询
         inquirer.prompt([
+            {
+                type: 'list',
+                name: 'source',
+                message: '请选择下载源',
+                choices: [
+                    'SiriusBot#main',
+                    'LingCat#main',
+                    'SiriusBot#dev'
+                ]
+            },
             {
                 type: 'input',
                 name: 'projectName',
@@ -53,8 +79,23 @@ program
                 default: '123456789'
             }
         ]).then(answers => {
+            let downloadUrl = '';
+            switch (answers.source) {
+                case 'SiriusBot#main':
+                    downloadUrl = source['SiriusBot'].downloadUrlMain;
+                    break;
 
-            const downloadUrl = "https://github.com:NPUcraft/LingCat-bot#main";
+                case 'SiriusBot#dev':
+                    downloadUrl = source['SiriusBot'].downloadUrlDev;
+                    break;
+
+                case 'LingCat#main':
+                    downloadUrl = source['LingCat-bot'].downloadUrlMain;
+                    break;
+
+                default:
+                    break;
+            }
             //下载github项目，下载墙loading提示
             const spinner = ora('正在下载...').start();
             //第一个参数是github仓库地址，第二个参数是创建的项目目录名，第三个参数是clone
