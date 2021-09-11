@@ -77,6 +77,12 @@ program
                 name: 'qid',
                 message: '请输入机器人qqID',
                 default: '123456789'
+            },
+            {
+                type: 'input',
+                name: 'ownerid',
+                message: '请输入机器人拥有者qqID',
+                default: '123456789'
             }
         ]).then(answers => {
             let downloadUrl = '';
@@ -110,6 +116,7 @@ program
                     packageContent["name"] = answers.projectName;
                     packageContent["botNickname"] = answers.botName;
                     packageContent["account"] = Number(answers.qid);
+                    packageContent["owner"] = Number(answers.ownerid);
                     fs.writeFileSync(`${resolve('./')}/${answers.projectName}/package.json`, JSON.stringify(packageContent, null, '\t'));
                     spinner.succeed('成功！ ~(*^▽^*)~');
 

@@ -13,7 +13,7 @@ const { getPermission } = require("../lib/permission");
 
 */
 
-async function {{funcName}}(data) {
+async function {{funcName}}(_bot, data) {
     if (!await getPermission(data, "{{funcName}}")) return;
     /* Do what you want */
 

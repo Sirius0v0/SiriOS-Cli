@@ -1,5 +1,8 @@
 "use strict"
 const { getPermission } = require("../lib/permission");
+const help = `
+【详细的帮助介绍】
+`.trim();
 
 /* ==== 切记 ==== */
 /*
@@ -23,8 +26,14 @@ tip: "isadmin"字段为功能权限，全部成员可用填["member", "admin", "
 
 */
 
-async function {{funcName}}(data, args = null) {
+async function {{funcName}}(_bot, data, args = null) {
     if (!await getPermission(data, "{{funcName}}")) return;
+    if (args?.length === 1 && ["help", '帮助'].indexOf(args?.[0]) !== -1) {
+        data.reply(help);
+        return;
+    } else if (args?.length > 1) {
+        return;
+    }
     /* Do what you want */
 
     /** 消息类data包含内容参考
