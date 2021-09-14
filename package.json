@@ -1,6 +1,6 @@
 {
   "name": "sirios-cli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "SiriOS管理部署工具",
   "main": "sirios.js",
   "bin": {

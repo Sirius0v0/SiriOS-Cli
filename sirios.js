@@ -28,20 +28,19 @@ console.log(chalk.green(`
 const source = {
     'SiriusBot': {
         url: 'https://github.com/Sirius0v0/SiriusBot',
-        downloadUrlMain: 'https://github.com:Sirius0v0/SiriusBot#main',
-        downloadUrlDev: 'https://github.com:Sirius0v0/SiriusBot#dev',
+        downloadUrlMain: 'direct:git@github.com:Sirius0v0/SiriusBot#main',
+        downloadUrlDev: 'direct:git@github.com:Sirius0v0/SiriusBot#dev',
         description: 'SiriOS原型--SiriusBot'
     },
     'LingCat-bot': {
         url: 'https://github.com/NPUcraft/LingCat-bot',
-        downloadUrlMain: 'https://github.com:NPUcraft/LingCat-bot#main',
-        downloadUrlDev: 'https://github.com:NPUcraft/LingCat-bot#dev',
+        downloadUrlMain: 'direct:git@github.com:NPUcraft/LingCat-bot#main',
         description: 'NPUcraft正版灵喵'
     }
 }
 
 // sirios -V|--version
-program.version('1.0.0');  // -v|--version时输出版本号0.1.0
+program.version('1.0.8');  // -v|--version时输出版本号0.1.0
 
 // sirios init
 program
@@ -107,7 +106,7 @@ program
             //第一个参数是github仓库地址，第二个参数是创建的项目目录名，第三个参数是clone
             download(downloadUrl, answers.projectName, { clone: true }, err => {
                 if (err) {
-                    console.log(logSymbols.error, chalk.red('项目下载失败 请重试 o(╥﹏╥)o'));
+                    console.log(logSymbols.error, chalk.red('项目下载失败 请配置SSH后重试 o(╥﹏╥)o'));
                     console.log(err);
                     spinner.fail("下载失败!")
                 } else {
